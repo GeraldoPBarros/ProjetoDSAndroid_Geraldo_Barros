@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="499dp"
+        android:layout_marginBottom="48dp"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/textIdFixo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identificação da Loja"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,MissingConstraints"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textIdFixo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="ID Loja: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textIdFixo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="Nome da Loja: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textId2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textIdFixo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="Telefone: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textId3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+
+        <TextView
+            android:id="@+id/textFixo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Descrição da Loja"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,MissingConstraints"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textFixo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Complemento: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textFixo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bairro: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="34dp" />
+
+         <TextView
+             android:id="@+id/textoFixo3"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Numero: "
+             android:textSize="16sp"
+             android:textStyle="bold"
+             tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+             tools:layout_editor_absoluteX="86dp"
+             tools:layout_editor_absoluteY="0dp" />
+
+         <TextView
+             android:id="@+id/txt3"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             tools:ignore="MissingConstraints"
+             tools:layout_editor_absoluteX="86dp"
+             tools:layout_editor_absoluteY="74dp" />
+
+          <TextView
+              android:id="@+id/textoFixo4"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Logradouro: "
+              android:textSize="16sp"
+              android:textStyle="bold"
+              tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry"
+              tools:layout_editor_absoluteX="86dp"
+              tools:layout_editor_absoluteY="0dp" />
+
+          <TextView
+              android:id="@+id/txt4"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              tools:ignore="MissingConstraints"
+              tools:layout_editor_absoluteX="86dp"
+              tools:layout_editor_absoluteY="108dp" />
+
+        <ImageView
+            android:id="@+id/captured_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_camera_grey600_24dp"
+            android:contentDescription="@string/desc"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

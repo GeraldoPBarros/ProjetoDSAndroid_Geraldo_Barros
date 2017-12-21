@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">[ProjetoDS-Android] Geraldo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Configurações</string>
+    <string name="capture_button">Capturar Foto</string>
+    <string name="desc">Capturar Imagem</string>
+    <string name="cancel">Cancelar</string>
+</resources>
