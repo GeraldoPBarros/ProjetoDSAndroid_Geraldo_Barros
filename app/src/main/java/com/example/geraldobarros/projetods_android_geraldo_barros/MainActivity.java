@@ -12,7 +12,6 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -49,80 +48,69 @@ public class MainActivity extends AppCompatActivity {
 
         String url = "https://api.myjson.com/bins/hvcbf";
 
-        final List<Trend> listaTrends = new ArrayList<Trend>();
+        final List<Loja> listaInfoLojas = new ArrayList<Loja>();
 
         try{
-            String result = "";
 
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpResponse response = httpClient.execute(new HttpGet(url));
-            BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
-            result = reader.readLine();
-            JSONObject jsonObject = new JSONObject(result);
-            String receiveObj = jsonObject.getString("lojas");
+            // Receber informações do JSON
+            JSONArray lojaArray = receberDadosJson(url);
 
-            JSONArray trendsArray = jsonObject.getJSONArray("lojas");
-
-            JSONObject trend;
+            JSONObject lojaObj;
             JSONObject jsonObjectIntrn;
+
             final List<Map<String, String>> data = new ArrayList<>();
 
-            for (int i = 0; i < trendsArray.length(); i++) {
-                trend = new JSONObject(trendsArray.getString(i));
+            // for para cada intem do array recebido via JSON
+            for (int i = 0; i < lojaArray.length(); i++) {
+                lojaObj = new JSONObject(lojaArray.getString(i));
 
-                jsonObjectIntrn = trendsArray.getJSONObject(i);
+                jsonObjectIntrn = lojaArray.getJSONObject(i);
                 JSONObject jsonSubObjectIntrn = jsonObjectIntrn.getJSONObject("endereco");
 
-                Trend objetoTrend = new Trend();
+                // Receber informações
+                Loja receberInfoObjLona = new Loja();
+                receberInfoObjLona.id = lojaObj.getString("id");
+                receberInfoObjLona.nome = lojaObj.getString("nome");
+                receberInfoObjLona.telefone = lojaObj.getString("telefone");
+                receberInfoObjLona.endComplemento = jsonSubObjectIntrn.getString("complemento");
+                receberInfoObjLona.endBairro = jsonSubObjectIntrn.getString("bairro");
+                receberInfoObjLona.endNumero = jsonSubObjectIntrn.getString("numero");
+                receberInfoObjLona.endLogradouro = jsonSubObjectIntrn.getString("logradouro");
+
+                // Map para informações a serem inseridas no ListView
                 Map<String, String> map = new HashMap<>(2);
-
-                objetoTrend.id = trend.getString("id");
-                objetoTrend.nome = trend.getString("nome");
-                objetoTrend.telefone = trend.getString("telefone");
-                objetoTrend.endComplemento = jsonSubObjectIntrn.getString("complemento");
-                objetoTrend.endBairro = jsonSubObjectIntrn.getString("bairro");
-                objetoTrend.endNumero = jsonSubObjectIntrn.getString("numero");
-                objetoTrend.endLogradouro = jsonSubObjectIntrn.getString("logradouro");
-
-                map.put("ID", trend.getString("id"));
-                map.put("Nome", trend.getString("nome"));
+                map.put("ID", lojaObj.getString("id"));
+                map.put("Nome", lojaObj.getString("nome"));
                 data.add(map);
 
-                listaTrends.add(objetoTrend);
+                listaInfoLojas.add(receberInfoObjLona);
             }
 
-
+            // Adaptar as informações ao ListView
             final SimpleAdapter adapter = new SimpleAdapter(this, data, android.R.layout.simple_list_item_2,
                     new String[]{"ID","Nome"}, new int[]{android.R.id.text1, android.R.id.text2});
 
             ListView lista = (ListView) findViewById(R.id.listView);
             lista.setAdapter(adapter);
 
+            // Adicionar evento de click ao ListView apresentando as descrições das lojas selecionadas
             lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                    Intent intent = new Intent(MainActivity.this, Description.class);
-                    intent.putExtra(idLoja, listaTrends.get(position).getId());
-                    intent.putExtra(nomeLoja, listaTrends.get(position).getNome());
-                    intent.putExtra(telefoneLoja, listaTrends.get(position).getTelefone());
-                    intent.putExtra(complementoDescrpt, listaTrends.get(position).getEndComplemento());
-                    intent.putExtra(bairroDescrpt, listaTrends.get(position).getEndBairro());
-                    intent.putExtra(numeroDescrpt, listaTrends.get(position).getEndNumero());
-                    intent.putExtra(logradouroDescrpt, listaTrends.get(position).getEndLogradouro());
+                    // Informações enviadas para Activity Descricao
+                    Intent intent = new Intent(MainActivity.this, Descricao.class);
+                    intent.putExtra(idLoja, listaInfoLojas.get(position).getId());
+                    intent.putExtra(nomeLoja, listaInfoLojas.get(position).getNome());
+                    intent.putExtra(telefoneLoja, listaInfoLojas.get(position).getTelefone());
+                    intent.putExtra(complementoDescrpt, listaInfoLojas.get(position).getEndComplemento());
+                    intent.putExtra(bairroDescrpt, listaInfoLojas.get(position).getEndBairro());
+                    intent.putExtra(numeroDescrpt, listaInfoLojas.get(position).getEndNumero());
+                    intent.putExtra(logradouroDescrpt, listaInfoLojas.get(position).getEndLogradouro());
                     startActivity(intent);
-
                 }
-
             });
-
-
-
-        } catch (ClientProtocolException e){
-            e.printStackTrace();
-        } catch (IOException e){
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e){
             e.printStackTrace();
         }
 
@@ -130,6 +118,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public JSONArray receberDadosJson(String url) throws IOException, JSONException {
+
+        JSONArray jsonArray;
+        String resultado;
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpResponse resposta = httpClient.execute(new HttpGet(url));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(resposta.getEntity().getContent(), "UTF-8"));
+
+        resultado = reader.readLine();
+        JSONObject jsonObject = new JSONObject(resultado);
+
+        jsonArray = jsonObject.getJSONArray("lojas");
+
+        return jsonArray;
+
+    }
 
     public void msgToast(String msg){
         Context context = getApplicationContext();

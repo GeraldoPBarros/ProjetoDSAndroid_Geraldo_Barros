@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
-            android:text="Lista de Lojas"
+            android:text="@string/lista_lojas"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,InvalidId,MissingConstraints"

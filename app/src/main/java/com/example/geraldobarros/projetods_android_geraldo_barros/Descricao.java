@@ -19,7 +19,7 @@ import android.widget.Toast;
  * Created by Geraldo Barros on 20/12/2017.
  */
 
-public class Description extends AppCompatActivity {
+public class Descricao extends AppCompatActivity {
 
     private ImageView imageHolder;
     Uri selectedImage;
@@ -29,57 +29,64 @@ public class Description extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.description);
 
+        // Receber indormaçõe iniciais da loja selecionada
         Intent intent = getIntent();
-        String messageID = intent.getStringExtra(MainActivity.idLoja);
-        String messageNome = intent.getStringExtra(MainActivity.nomeLoja);
-        String messageTelefone = intent.getStringExtra(MainActivity.telefoneLoja);
+        String menssageID = intent.getStringExtra(MainActivity.idLoja);
+        String menssageNome = intent.getStringExtra(MainActivity.nomeLoja);
+        String menssageTelefone = intent.getStringExtra(MainActivity.telefoneLoja);
 
-        String messageComp = intent.getStringExtra(MainActivity.complementoDescrpt);
-        String messageBairro = intent.getStringExtra(MainActivity.bairroDescrpt);
-        String messageDescr = intent.getStringExtra(MainActivity.numeroDescrpt);
-        String messageLogra = intent.getStringExtra(MainActivity.logradouroDescrpt);
+        // Receber informações de endereco da loja selecionada
+        String menssageComp = intent.getStringExtra(MainActivity.complementoDescrpt);
+        String menssageBairro = intent.getStringExtra(MainActivity.bairroDescrpt);
+        String menssageDescr = intent.getStringExtra(MainActivity.numeroDescrpt);
+        String menssageLogra = intent.getStringExtra(MainActivity.logradouroDescrpt);
 
+        // Atribuir informações aos TextViews
         TextView textViewId = findViewById(R.id.textId);
-        textViewId.setText(messageID);
+        textViewId.setText(menssageID);
 
         TextView textViewNome = findViewById(R.id.textId2);
-        textViewNome.setText(messageNome);
+        textViewNome.setText(menssageNome);
 
         TextView textViewTelefone = findViewById(R.id.textId3);
-        textViewTelefone.setText(messageTelefone);
+        textViewTelefone.setText(menssageTelefone);
 
         TextView textView = findViewById(R.id.txt1);
-        textView.setText(messageComp);
+        textView.setText(menssageComp);
 
         TextView textView2 = findViewById(R.id.txt2);
-        textView2.setText(messageBairro);
+        textView2.setText(menssageBairro);
 
         TextView textView3 = findViewById(R.id.txt3);
-        textView3.setText(messageDescr);
+        textView3.setText(menssageDescr);
 
         TextView textView4 = findViewById(R.id.txt4);
-        textView4.setText(messageLogra);
+        textView4.setText(menssageLogra);
 
 
         imageHolder = findViewById(R.id.captured_photo);
 
+        // Atribuir evento de click a imagem, no caso, tirar foto pela câmera ou buscar foto da galeria
         imageHolder.setOnClickListener(new View.OnClickListener() {
             CharSequence options[] = new CharSequence[] {"Câmera", "Galeria"};
 
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(Description.this);
+                // AlertiDialog para exibir opcao de escolha de foto
+                AlertDialog.Builder builder = new AlertDialog.Builder(Descricao.this);
                 builder.setCancelable(false);
                 builder.setTitle("Buscar foto:");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                       if (which == 0){
+                    public void onClick(DialogInterface dialog, int opcao) {
+                       // Tirar foto pela camera
+                       if (opcao == 0){
                            Intent photoCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                            startActivityForResult(photoCaptureIntent, 0);
                        }
-                       if (which == 1){
+                       // Buscar foto da galeria
+                       if (opcao == 1){
                            Intent photoCaptureIntent = new Intent(Intent.ACTION_PICK,
                                    android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                            startActivityForResult(photoCaptureIntent, 1);
@@ -89,12 +96,10 @@ public class Description extends AppCompatActivity {
                 });
                 builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //the user clicked on Cancel
+                    public void onClick(DialogInterface dialog, int opcao) {
                     }
                 });
                 builder.show();
-
             }
         });
 
@@ -113,10 +118,8 @@ public class Description extends AppCompatActivity {
                 selectedImage = data.getData();
                 imageHolder.setImageURI(selectedImage);
 
-
             }
         }
-
 
     }
 

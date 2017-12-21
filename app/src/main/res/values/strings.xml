@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">[ProjetoDS-Android] Geraldo</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="lista_lojas">Lista de Lojas</string>
     <string name="action_settings">Configurações</string>
     <string name="capture_button">Capturar Foto</string>
     <string name="desc">Capturar Imagem</string>
     <string name="cancel">Cancelar</string>
+    <string name="idLoja">ID da Loja:</string>
+    <string name="nomeLoja">Nome da Loja:</string>
+    <string name="telefoneLoja">Telefone:</string>
+    <string name="descricaoLoja">Descrição da Loja</string>
+    <string name="complementoDescLoja">Complemento:</string>
+    <string name="bairroDescLoja">Bairro:</string>
+    <string name="numeroDescLoja">Numero:</string>
+    <string name="logradouroDescLoja">Logradouro:</string>
 </resources>

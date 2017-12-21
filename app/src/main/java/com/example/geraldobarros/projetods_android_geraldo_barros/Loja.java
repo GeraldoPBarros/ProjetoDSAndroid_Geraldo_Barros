@@ -4,7 +4,7 @@ package com.example.geraldobarros.projetods_android_geraldo_barros;
  * Created by Geraldo Barros on 19/12/2017.
  */
 
-public class Trend {
+public class Loja {
     String id;
     String nome;
     String telefone;
@@ -13,14 +13,14 @@ public class Trend {
     String endNumero;
     String endLogradouro;
 
-    public Trend(String id, String nome, String telefone) {
+    public Loja(String id, String nome, String telefone) {
         super();
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
     }
 
-    public Trend() {
+    public Loja() {
         this("","","");
     }
 
